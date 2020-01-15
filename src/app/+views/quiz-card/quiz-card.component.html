@@ -1,0 +1,28 @@
+<mat-card>
+  <mat-card-header>
+    <div mat-card-avatar>
+      <i [ngClass]="this.icon"></i>
+    </div>
+    <mat-card-title>{{this.quizCard.title}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      {{this.quizCard.description}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-stroked-button class="mr-3" (click)="combineQuiz(quizCard)" [disabled]="quizCard.typeOfSelection == 2 && quizCard.themes.value.length == 0">PLAY</button>
+    <mat-form-field *ngIf="quizCard.typeOfSelection < 2 || quizCard.typeOfSelection > 3">
+      <mat-label>{{this.quizCard.selectionLabel}}</mat-label>
+      <mat-select [(value)]="quizCard.selectedValue">
+        <mat-option *ngFor="let value of quizCard.selectionValues; let i = index;" [value]="value">{{quizCard.selectionList[i]}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field *ngIf="quizCard.typeOfSelection == 2">
+      <mat-label>{{this.quizCard.selectionLabel}}</mat-label>
+      <mat-select [formControl]="quizCard.themes" multiple>
+        <mat-option *ngFor="let value of quizCard.selectionValues; let i = index;" [value]="value">{{quizCard.selectionList[i]}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-card-actions>
+</mat-card>

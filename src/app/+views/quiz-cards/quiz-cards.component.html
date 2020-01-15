@@ -1,0 +1,37 @@
+<div class="d-flex flex-column" role="main">
+  <!-- <h1>GeoQuiz</h1> -->
+  <!-- Highlight Card -->
+  <div>
+    <blockquote class="blockquote text-center">
+      <p class="mb-0">This is a simple quiz game that uses the GPS location to ask suitable questions about
+        famous people, architectural monuments, well-known companies and other interesting things around you.
+    </blockquote>
+  </div>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <app-quiz-card class="col-xs-12 col-lg-5 ml-3 mr-3 mb-4 example-card card-margin mat-elevation-z3 pl-0 pr-0" [icon]="['fas', 'fa-2x', 'fa-hourglass-start']" [quizCard] = "this.quizCards[0]"></app-quiz-card>
+      <app-quiz-card class="col-xs-12 col-lg-5 ml-3 mr-3 mb-4 example-card card-margin mat-elevation-z3 pl-0 pr-0" [icon]="['fas', 'fa-2x', 'fa-list-ol']" [quizCard] = "this.quizCards[1]"></app-quiz-card>
+      <app-quiz-card class="col-xs-12 col-lg-5 ml-3 mr-3 mb-4 example-card card-margin mat-elevation-z3 pl-0 pr-0" [icon]="['fas', 'fa-2x', 'fa-brain']" [quizCard] = "this.quizCards[2]"></app-quiz-card>
+      <app-quiz-card class="col-xs-12 col-lg-5 ml-3 mr-3 mb-4 example-card card-margin mat-elevation-z3 pl-0 pr-0" [icon]="['fas', 'fa-2x', 'fa-info-circle']" [quizCard] = "this.quizCards[3]"></app-quiz-card>
+      <app-quiz-card class="col-xs-12 col-lg-5 ml-3 mr-3 mb-4 example-card card-margin mat-elevation-z3 pl-0 pr-0" [icon]="['fas', 'fa-2x', 'fa-info-circle']" [quizCard] = "this.quizCards[4]"></app-quiz-card>
+
+      <mat-card class="col-xs-12 col-lg-5 ml-3 mr-3 mb-4 example-card card-margin mat-elevation-z8">
+        <mat-card-header>
+          <div mat-card-avatar>
+            <i class="fas fa-2x fa-medal"></i>
+          </div>
+          <mat-card-title>Rankings</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            See how good the other players are. The rankings include 10 best players based on right answered questions. Total number of question and wrong answers are also listed.
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-stroked-button class="mr-2" (click)="navigateToRankings()">SHOW ME RANKINGS</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

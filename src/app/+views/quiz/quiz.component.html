@@ -1,0 +1,91 @@
+<div class="d-flex flex-column mb-4">
+  <div class="container">
+    <div class="row justify-content-end">
+      <button mat-raised-button color="warn" class="mt-3 mr-3" (click)='quitQuiz()'>QUIT QUIZ</button>
+    </div>
+    <div class="row justify-content-center">
+      <h2 *ngIf="this.quizLoaded">{{this.quiz.title}}</h2>
+      <div *ngIf="!this.quizLoaded">
+        <h2 class="col-12 text-center">The quize is loaded incorrectly!</h2>
+        <blockquote class="col-12 blockquote text-center">
+          <p class="mb-0">Please, use only navigation buttons from the web seite!
+        </blockquote>
+      </div>
+    </div>
+    <div *ngIf="quiz" class="row justify-content-center">
+      <mat-card class="col-xs-12 col-lg-12 ml-3 mr-3 mat-elevation-z8">
+        <mat-card-header>
+          <div mat-card-avatar>
+            <i class="far fa-2x fa-question-circle"></i>
+          </div>
+          <mat-card-title *ngIf="quiz.timeLimited">Question {{questionNumber}}, Time Left: {{timeLeft}}</mat-card-title>
+          <mat-card-title *ngIf="quiz.questionsNumberLimited && !quiz.adventure">Question {{questionNumber}} / {{totalQuestionNumber}}, Time Left: {{timeLeft}}</mat-card-title>
+          <mat-card-title *ngIf="quiz.themesLimited">Question {{questionNumber}}</mat-card-title>
+          <mat-card-title *ngIf="quiz.questionsNumberLimited && quiz.adventure">Level {{currentLevel}} / 10, Question {{questionNumber}}, Lives left: {{lives}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content style="text-align: center;">
+          <h5 class="mb-4" *ngIf="!questionGenerated">
+            The question for this quiz are generated now!
+          </h5>
+          <h5 class="mb-4" *ngIf="questionGenerated">
+            {{questionText}}
+          </h5>
+          <mat-radio-group aria-label="Select an option" *ngIf="questionGenerated" class="text-center" [(ngModel)]="currentAnswer">
+            <!-- <mat-radio-button *ngFor="let value of this.answers; let i = index;" [value]="value" >{{this.answers[i]}}</mat-radio-button><br> -->
+            <mat-radio-button [value]="answers[0]" >{{answers[0]}}</mat-radio-button><br>
+            <mat-radio-button [value]="answers[1]" >{{answers[1]}}</mat-radio-button><br>
+            <mat-radio-button [value]="answers[2]" >{{answers[2]}}</mat-radio-button><br>
+            <mat-radio-button [value]="answers[3]" >{{answers[3]}}</mat-radio-button><br>
+          </mat-radio-group>
+        </mat-card-content>
+
+
+
+        <mat-card-actions class="d-flex justify-content-around">
+          <button mat-stroked-button [disabled] = "quizCompleted || !questionGenerated" (click)="skipQuestion()">SKIP</button>
+          <button mat-raised-button color="primary" (click)="(quiz.themesLimited) ? answerNoTimer() : answer();" [disabled] = "quizCompleted || !questionGenerated">ANSWER</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+<swal #LostDialog title="You lost!" [width]="300"
+  [showCancelButton]="false" [showConfirmButton]="false">
+  <div *swalPortal>
+    <div class="text-center"><i class="far fa-3x fa-sad-tear"></i></div>
+    <div class="text-center">Total number of questions: {{totalQuestionNumber}}</div>
+    <div class="text-center">Right answers: {{rightAnswers}}</div>
+    <div class="text-center">Wrong answers: {{wrongAnswers}}</div>
+    <div class="mt-5 text-center">
+      <button mat-raised-button color="warn" (click)="dismissLostDialog(); navigateToMain()">TO MAIN PAGE</button>
+    </div>
+  </div>
+</swal>
+
+<swal #WonDialog title="You completed this quiz!" [width]="300"
+  [showCancelButton]="false" [showConfirmButton]="false">
+  <div *swalPortal>
+    <div class="text-center"><i class="far fa-3x fa-laugh-beam"></i></div>
+    <div class="text-center">Total number of questions: {{this.totalQuestionNumber}}</div>
+    <div class="text-center">Right answers: {{this.rightAnswers}}</div>
+    <div class="text-center">Wrong answers: {{this.wrongAnswers}}</div>
+    <div class="mt-5 text-center">
+      <button mat-raised-button color="warn" (click)="dismissWonDialog(); navigateToMain()">TO MAIN PAGE</button>
+    </div>
+  </div>
+</swal>
+
+<swal #QuitQuizDialog title="Are you sure?" [width]="300"
+  [showCancelButton]="false" [showConfirmButton]="false">
+  <div *swalPortal>
+    <!-- <div class="text-center"><i class="fas fa-3x fa-question"></i></div> -->
+    <div class="text-center">Total number of questions: {{this.totalQuestionNumber}}</div>
+    <div class="text-center">Right answers: {{this.rightAnswers}}</div>
+    <div class="text-center">Wrong answers: {{this.wrongAnswers}}</div>
+    <div class="mt-5 text-center">
+      <button mat-raised-button color="warn" class="mr-3" (click)="dismissQuitQuizDialog(); navigateToMain()">TO MAIN PAGE</button>
+      <button mat-raised-button color="primary" (click)="dismissQuitQuizDialog()">STAY HERE</button>
+    </div>
+  </div>
+</swal>

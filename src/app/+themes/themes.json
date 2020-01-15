@@ -1,0 +1,55 @@
+[
+  {
+    "label": "Chateu",
+    "qId": "Q751876",
+    "properties": [
+      "P571",
+      "P127",
+      "P84"
+    ]
+  },
+  {
+    "label": "Research institute",
+    "qId": "Q31855",
+    "properties": [
+      "P571",
+      "P101",
+      "P856"
+    ]
+  },
+  {
+    "label": "Nature reserve",
+    "qId": "Q759421",
+    "properties": [
+      "P571"
+    ]
+  },
+  {
+    "label": "Art museum",
+    "qId": "Q207694",
+    "properties": [
+      "P571",
+      "P1037",
+      "P135"
+    ]
+  },
+  {
+    "label": "Human",
+    "qId": "Q5",
+    "properties": [
+      "P569",
+      "P106",
+      "P97",
+      "P20"
+    ]
+  },
+  {
+    "label": "University",
+    "qId": "Q3918",
+    "properties": [
+      "P571",
+      "P1037",
+      "P856"
+    ]
+  }
+]

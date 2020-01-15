@@ -55,14 +55,13 @@ export class QuizComponent implements OnInit, OnDestroy {
       this.generateQuestion(this.quiz);
       if (this.quiz.timeLimited) {
         this.timeLeft = this.quiz.timeLimit;
-        this.startTimer();
       }
 
       if (this.quiz.questionsNumberLimited) {
         this.totalQuestionNumber = this.quiz.questionsNumberLimit;
         this.timeLeft = this.quiz.timeLimit;
-        this.startTimer();
       }
+      this.startTimer();
     }
   }
 

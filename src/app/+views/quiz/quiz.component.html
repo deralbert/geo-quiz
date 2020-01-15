@@ -18,8 +18,8 @@
           <div mat-card-avatar>
             <i class="far fa-2x fa-question-circle"></i>
           </div>
-          <mat-card-title *ngIf="quiz.timeLimited">Question {{questionNumber}}, Time Left: {{timeLeft}}</mat-card-title>
-          <mat-card-title *ngIf="quiz.questionsNumberLimited && !quiz.adventure">Question {{questionNumber}} / {{totalQuestionNumber}}, Time Left: {{timeLeft}}</mat-card-title>
+          <mat-card-title *ngIf="quiz.timeLimited">Question {{questionNumber}}, <i class="fas fa-hourglass-half"></i> {{timeLeft}}</mat-card-title>
+          <mat-card-title *ngIf="quiz.questionsNumberLimited && !quiz.adventure">Question {{questionNumber}} / {{totalQuestionNumber}}, <i class="fas fa-hourglass-half"></i> {{timeLeft}}</mat-card-title>
           <mat-card-title *ngIf="quiz.themesLimited">Question {{questionNumber}}</mat-card-title>
           <mat-card-title *ngIf="quiz.questionsNumberLimited && quiz.adventure">Level {{currentLevel}} / 10, Question {{questionNumber}}, Lives left: {{lives}}</mat-card-title>
         </mat-card-header>

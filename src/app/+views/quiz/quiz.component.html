@@ -57,6 +57,7 @@
     <div class="text-center">Total number of questions: {{totalQuestionNumber}}</div>
     <div class="text-center">Right answers: {{rightAnswers}}</div>
     <div class="text-center">Wrong answers: {{wrongAnswers}}</div>
+    <div class="text-center">Skipped questions: {{skippedQuestions}}</div>
     <div class="mt-5 text-center">
       <button mat-raised-button color="warn" (click)="dismissLostDialog(); navigateToMain()">TO MAIN PAGE</button>
     </div>
@@ -67,9 +68,10 @@
   [showCancelButton]="false" [showConfirmButton]="false">
   <div *swalPortal>
     <div class="text-center"><i class="far fa-3x fa-laugh-beam"></i></div>
-    <div class="text-center">Total number of questions: {{this.totalQuestionNumber}}</div>
-    <div class="text-center">Right answers: {{this.rightAnswers}}</div>
-    <div class="text-center">Wrong answers: {{this.wrongAnswers}}</div>
+    <div class="text-center">Total number of questions: {{totalQuestionNumber}}</div>
+    <div class="text-center">Right answers: {{rightAnswers}}</div>
+    <div class="text-center">Wrong answers: {{wrongAnswers}}</div>
+    <div class="text-center">Skipped questions: {{skippedQuestions}}</div>
     <div class="mt-5 text-center">
       <button mat-raised-button color="warn" (click)="dismissWonDialog(); navigateToMain()">TO MAIN PAGE</button>
     </div>
@@ -80,9 +82,10 @@
   [showCancelButton]="false" [showConfirmButton]="false">
   <div *swalPortal>
     <!-- <div class="text-center"><i class="fas fa-3x fa-question"></i></div> -->
-    <div class="text-center">Total number of questions: {{this.totalQuestionNumber}}</div>
-    <div class="text-center">Right answers: {{this.rightAnswers}}</div>
-    <div class="text-center">Wrong answers: {{this.wrongAnswers}}</div>
+    <div class="text-center">Total number of questions: {{totalQuestionNumber}}</div>
+    <div class="text-center">Right answers: {{rightAnswers}}</div>
+    <div class="text-center">Wrong answers: {{wrongAnswers}}</div>
+    <div class="text-center">Skipped questions: {{skippedQuestions}}</div>
     <div class="mt-5 text-center">
       <button mat-raised-button color="warn" class="mr-3" (click)="dismissQuitQuizDialog(); navigateToMain()">TO MAIN PAGE</button>
       <button mat-raised-button color="primary" (click)="dismissQuitQuizDialog()">STAY HERE</button>

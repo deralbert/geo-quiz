@@ -13,26 +13,26 @@ import themes from './../../+themes/themes.json';
   styleUrls: ['./quiz.component.css']
 })
 export class QuizComponent implements OnInit, OnDestroy {
-  private quiz: Quiz;
-  private questionNumber = 1;
-  private totalQuestionNumber = 0;
-  private rightAnswers = 0;
-  private wrongAnswers = 0;
-  private skippedAquestions = 0;
-  private quizCompleted = false;
-  private quizLoaded = false;
-  private currentLevel = 1;
-  private lives = 5;
-  private questionGenerated = false;
-  private questionText: string;
-  private questionAnswer: string;
-  private answers: any[];
-  private currentAnswer: string;
-  private radius = 20;
+  public quiz: Quiz;
+  public questionNumber = 1;
+  public totalQuestionNumber = 0;
+  public rightAnswers = 0;
+  public wrongAnswers = 0;
+  public skippedQuestions = 0;
+  public quizCompleted = false;
+  public quizLoaded = false;
+  public currentLevel = 1;
+  public lives = 5;
+  public questionGenerated = false;
+  public questionText: string;
+  public questionAnswer: string;
+  public answers: any[];
+  public currentAnswer: string;
+  public radius = 20;
 
   public questionThemes: { label: string, qId: string, properties: string[] }[] = themes;
 
-  private timeLeft: number;
+  public timeLeft: number;
   interval: any;
 
   @ViewChild('LostDialog', { static: false }) private LostDialog: SwalComponent;
@@ -168,7 +168,7 @@ export class QuizComponent implements OnInit, OnDestroy {
 
   public skipQuestion() {
     this.questionGenerated = false;
-    this.skippedAquestions++;
+    this.skippedQuestions++;
     this.stopTimer();
     this.resetTimer();
     if (this.questionNumber === this.totalQuestionNumber) {

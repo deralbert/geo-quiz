@@ -68,7 +68,7 @@ export class QuizCardsComponent implements OnInit {
     quizCard.description = 'In quiz training, you can practice quiz questions with no time limit. You can also select only topics '
     + 'that interest you. You can also determine the number of questions yourself.';
     quizCard.typeOfSelection = 2;
-    quizCard.selectionLabel = 'Select themes that interes you';
+    quizCard.selectionLabel = 'Select themes that interest you';
     quizCard.selectionList = new Array();
     quizCard.selectionValues = new Array();
     this.questionThemes.forEach(theme => {

@@ -173,6 +173,18 @@ export class QuizComponent implements OnInit, OnDestroy {
     }
   }
 
+  public skipQuestionNoTimer() {
+    this.questionGenerated = false;
+    this.skippedQuestions++;
+    if (this.questionNumber === this.totalQuestionNumber) {
+      this.quizCompleted = true;
+      this.WonDialog.fire();
+    } else {
+      this.generateQuestion(this.quiz);
+      this.questionNumber++;
+    }
+  }
+
   public skipQuestion() {
     this.questionGenerated = false;
     this.skippedQuestions++;

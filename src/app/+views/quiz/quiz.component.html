@@ -47,7 +47,7 @@
 
         <mat-card-actions class="d-flex justify-content-around">
           <button mat-stroked-button [disabled]="quizCompleted || !questionGenerated"
-            (click)="skipQuestion()">SKIP</button>
+            (click)="(quiz.themesLimited) ? skipQuestionNoTimer() : skipQuestion();">SKIP</button>
           <button mat-raised-button color="primary" (click)="(quiz.themesLimited) ? answerNoTimer() : answer();"
             [disabled]="quizCompleted || !questionGenerated">ANSWER</button>
         </mat-card-actions>

@@ -62,6 +62,7 @@ export class QuizCardComponent implements OnInit {
         this.quiz.questionsNumberLimit = quizCard.selectedValue;
         break;
       case QuizGameModes.Training:
+        this.quiz.themesLimited = true;
         this.quiz.gameMode = QuizGameModes.Training;
         this.quiz.themes = quizCard.themes.value;
         break;

@@ -7,6 +7,7 @@ export class Quiz {
   public timeLimited = false;
   public timeLimit = -1;
   public gameMode: QuizGameModes;
+  public themesLimited = false;
   public themes: string[] = [];
   public constructor(init?: Partial<Quiz>) {
     Object.assign(this, init);

@@ -20,10 +20,10 @@
           </div>
           <mat-card-title *ngIf="quiz.timeLimited && !quiz.questionsNumberLimited">Question {{questionNumber}}, <i
               class="fas fa-hourglass-half"></i> {{timeLeft}}</mat-card-title>
-          <mat-card-title *ngIf="quiz.questionsNumberLimited && !quiz.adventure">Question {{questionNumber}} /
+          <mat-card-title *ngIf="quiz.questionsNumberLimited && quiz.gameMode != 4">Question {{questionNumber}} /
             {{totalQuestionNumber}}, <i class="fas fa-hourglass-half"></i> {{timeLeft}}</mat-card-title>
           <mat-card-title *ngIf="quiz.themesLimited">Question {{questionNumber}}</mat-card-title>
-          <mat-card-title *ngIf="quiz.questionsNumberLimited && quiz.adventure">Level {{currentLevel}} / 10,
+          <mat-card-title *ngIf="quiz.questionsNumberLimited && quiz.gameMode != 4">Level {{currentLevel}} / 10,
             Question {{questionNumber}}, Lives left: {{lives}}</mat-card-title>
         </mat-card-header>
         <mat-card-content style="text-align: center;">

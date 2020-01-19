@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { Component, OnInit, HostListener, ViewChild, OnDestroy } from '@angular/core';
 import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 import themes from './../../+themes/themes.json';
+import { QuizGameModes } from './../../models/quiz-game-modes';
 
 @Component({
   selector: 'app-quiz',
@@ -53,15 +54,22 @@ export class QuizComponent implements OnInit, OnDestroy {
   ngOnInit() {
     if (this.quiz) {
       this.generateQuestion(this.quiz);
-      if (this.quiz.timeLimited) {
+      if (this.quiz.gameMode === QuizGameModes.LimitedTime) {
         this.timeLeft = this.quiz.timeLimit;
+        this.startTimer();
       }
 
-      if (this.quiz.questionsNumberLimited) {
+      if (this.quiz.gameMode === QuizGameModes.XQUestions) {
         this.totalQuestionNumber = this.quiz.questionsNumberLimit;
         this.timeLeft = this.quiz.timeLimit;
+        this.startTimer();
       }
-      this.startTimer();
+
+      if (this.quiz.gameMode === QuizGameModes.Expert) {
+        this.totalQuestionNumber = this.quiz.questionsNumberLimit;
+        this.timeLeft = this.quiz.timeLimit;
+        this.startTimer();
+      }
     }
   }
 
@@ -146,7 +154,7 @@ export class QuizComponent implements OnInit, OnDestroy {
       this.wrongAnswers++;
     }
     this.currentAnswer = '';
-    if (this.quiz.expert) {
+    if (this.quiz.gameMode === QuizGameModes.Expert) {
       if (this.wrongAnswers > 0) {
         this.quizCompleted = true;
         this.stopTimer();

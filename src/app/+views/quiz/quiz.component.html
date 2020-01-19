@@ -18,10 +18,13 @@
           <div mat-card-avatar>
             <i class="far fa-2x fa-question-circle"></i>
           </div>
-          <mat-card-title *ngIf="quiz.timeLimited">Question {{questionNumber}}, <i class="fas fa-hourglass-half"></i> {{timeLeft}}</mat-card-title>
-          <mat-card-title *ngIf="quiz.questionsNumberLimited && !quiz.adventure">Question {{questionNumber}} / {{totalQuestionNumber}}, <i class="fas fa-hourglass-half"></i> {{timeLeft}}</mat-card-title>
+          <mat-card-title *ngIf="quiz.timeLimited && !quiz.questionsNumberLimited">Question {{questionNumber}}, <i
+              class="fas fa-hourglass-half"></i> {{timeLeft}}</mat-card-title>
+          <mat-card-title *ngIf="quiz.questionsNumberLimited && !quiz.adventure">Question {{questionNumber}} /
+            {{totalQuestionNumber}}, <i class="fas fa-hourglass-half"></i> {{timeLeft}}</mat-card-title>
           <mat-card-title *ngIf="quiz.themesLimited">Question {{questionNumber}}</mat-card-title>
-          <mat-card-title *ngIf="quiz.questionsNumberLimited && quiz.adventure">Level {{currentLevel}} / 10, Question {{questionNumber}}, Lives left: {{lives}}</mat-card-title>
+          <mat-card-title *ngIf="quiz.questionsNumberLimited && quiz.adventure">Level {{currentLevel}} / 10,
+            Question {{questionNumber}}, Lives left: {{lives}}</mat-card-title>
         </mat-card-header>
         <mat-card-content style="text-align: center;">
           <h5 class="mb-4" *ngIf="!questionGenerated">
@@ -30,28 +33,30 @@
           <h5 class="mb-4" *ngIf="questionGenerated">
             {{questionText}}
           </h5>
-          <mat-radio-group aria-label="Select an option" *ngIf="questionGenerated" class="text-center" [(ngModel)]="currentAnswer">
+          <mat-radio-group aria-label="Select an option" *ngIf="questionGenerated" class="text-center"
+            [(ngModel)]="currentAnswer">
             <!-- <mat-radio-button *ngFor="let value of this.answers; let i = index;" [value]="value" >{{this.answers[i]}}</mat-radio-button><br> -->
-            <mat-radio-button [value]="answers[0]" >{{answers[0]}}</mat-radio-button><br>
-            <mat-radio-button [value]="answers[1]" >{{answers[1]}}</mat-radio-button><br>
-            <mat-radio-button [value]="answers[2]" >{{answers[2]}}</mat-radio-button><br>
-            <mat-radio-button [value]="answers[3]" >{{answers[3]}}</mat-radio-button><br>
+            <mat-radio-button [value]="answers[0]">{{answers[0]}}</mat-radio-button><br>
+            <mat-radio-button [value]="answers[1]">{{answers[1]}}</mat-radio-button><br>
+            <mat-radio-button [value]="answers[2]">{{answers[2]}}</mat-radio-button><br>
+            <mat-radio-button [value]="answers[3]">{{answers[3]}}</mat-radio-button><br>
           </mat-radio-group>
         </mat-card-content>
 
 
 
         <mat-card-actions class="d-flex justify-content-around">
-          <button mat-stroked-button [disabled] = "quizCompleted || !questionGenerated" (click)="skipQuestion()">SKIP</button>
-          <button mat-raised-button color="primary" (click)="(quiz.themesLimited) ? answerNoTimer() : answer();" [disabled] = "quizCompleted || !questionGenerated">ANSWER</button>
+          <button mat-stroked-button [disabled]="quizCompleted || !questionGenerated"
+            (click)="skipQuestion()">SKIP</button>
+          <button mat-raised-button color="primary" (click)="(quiz.themesLimited) ? answerNoTimer() : answer();"
+            [disabled]="quizCompleted || !questionGenerated">ANSWER</button>
         </mat-card-actions>
       </mat-card>
     </div>
   </div>
 </div>
 
-<swal #LostDialog title="You lost!" [width]="300"
-  [showCancelButton]="false" [showConfirmButton]="false">
+<swal #LostDialog title="You lost!" [width]="300" [showCancelButton]="false" [showConfirmButton]="false">
   <div *swalPortal>
     <div class="text-center"><i class="far fa-3x fa-sad-tear"></i></div>
     <div class="text-center">Total number of questions: {{totalQuestionNumber}}</div>
@@ -64,8 +69,7 @@
   </div>
 </swal>
 
-<swal #WonDialog title="You completed this quiz!" [width]="300"
-  [showCancelButton]="false" [showConfirmButton]="false">
+<swal #WonDialog title="You completed this quiz!" [width]="300" [showCancelButton]="false" [showConfirmButton]="false">
   <div *swalPortal>
     <div class="text-center"><i class="far fa-3x fa-laugh-beam"></i></div>
     <div class="text-center">Total number of questions: {{totalQuestionNumber}}</div>
@@ -78,8 +82,7 @@
   </div>
 </swal>
 
-<swal #QuitQuizDialog title="Are you sure?" [width]="300"
-  [showCancelButton]="false" [showConfirmButton]="false">
+<swal #QuitQuizDialog title="Are you sure?" [width]="300" [showCancelButton]="false" [showConfirmButton]="false">
   <div *swalPortal>
     <!-- <div class="text-center"><i class="fas fa-3x fa-question"></i></div> -->
     <div class="text-center">Total number of questions: {{totalQuestionNumber}}</div>
@@ -87,7 +90,8 @@
     <div class="text-center">Wrong answers: {{wrongAnswers}}</div>
     <div class="text-center">Skipped questions: {{skippedQuestions}}</div>
     <div class="mt-5 text-center">
-      <button mat-raised-button color="warn" class="mr-3" (click)="dismissQuitQuizDialog(); navigateToMain()">TO MAIN PAGE</button>
+      <button mat-raised-button color="warn" class="mr-3" (click)="dismissQuitQuizDialog(); navigateToMain()">TO
+        MAIN PAGE</button>
       <button mat-raised-button color="primary" (click)="dismissQuitQuizDialog()">STAY HERE</button>
     </div>
   </div>
